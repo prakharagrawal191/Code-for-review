@@ -1,0 +1,67 @@
+import unittest
+
+class TestLinkedList(unittest.TestCase):
+
+    def setUp(self):
+        self.ll = LinkedList()
+
+    def test_insert_at_head(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_head(20)
+        self.assertEqual(self.ll.display(), [20, 10])
+
+    def test_insert_at_tail(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(20)
+        self.ll.insert_at_tail(30)
+        self.assertEqual(self.ll.display(), [10, 20, 30])
+
+    def test_insert_at_position(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(30)
+        self.ll.insert_at_position(20, 1)
+        self.assertEqual(self.ll.display(), [10, 20, 30])
+
+    def test_delete_at_head(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_head(20)
+        self.ll.delete_at_head()
+        self.assertEqual(self.ll.display(), [10])
+
+    def test_delete_at_tail(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(20)
+        self.ll.insert_at_tail(30)
+        self.ll.delete_at_tail()
+        self.assertEqual(self.ll.display(), [10, 20])
+
+    def test_delete_at_position(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(30)
+        self.ll.insert_at_position(20, 1)
+        self.ll.delete_at_position(1)
+        self.assertEqual(self.ll.display(), [10, 30])
+
+    def test_search(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(20)
+        self.ll.insert_at_tail(30)
+        self.assertEqual(self.ll.search(20), 1)
+        self.assertEqual(self.ll.search(40), -1)
+
+    def test_reverse(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(20)
+        self.ll.insert_at_tail(30)
+        self.ll.reverse()
+        self.assertEqual(self.ll.display(), [30, 20, 10])
+
+    def test_size(self):
+        self.ll.insert_at_head(10)
+        self.ll.insert_at_tail(20)
+        self.assertEqual(self.ll.size(), 2)
+        self.ll.insert_at_tail(30)
+        self.assertEqual(self.ll.size(), 3)
+
+if __name__ == '__main__':
+    unittest.main()
